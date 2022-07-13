@@ -34,7 +34,7 @@ def update_bar_chart(selected_cycle):
     df = pd.read_csv(f'./positions/position_-5000.00_{selected_cycle}.csv') # replace with your own data source
     df.columns = ['x','y','z']
     fig = px.scatter_3d(df, 
-        x='x', y='y', z='z')
+        x='x', y='y', z='z',color='z')
     # fig = px.scatter(df,x='x',y='y')
     return fig
 
@@ -48,11 +48,16 @@ def update_bar_chart_2(selected_cycle,projection_dir):
     # fig = px.scatter_3d(df, 
     #     x='x', y='y', z='z')
     if projection_dir == 'Z':
-        fig = px.scatter(df, x='x',y='y')
+        fig = px.scatter(df, x='x',y='y',color='z')
     elif projection_dir == 'Y':
-        fig = px.scatter(df, x='x',y='z')
+        fig = px.scatter(df, x='x',y='z',color='y')
     else:
-        fig = px.scatter(df, x='y',y='z')
+        fig = px.scatter(df, x='y',y='z',color='x')
+    
+    fig.update_layout({
+        'plot_bgcolor': 'rgba(0, 0, 0, 0)',
+        # 'paper_bgcolor': 'rgba(0, 0, 0, 0)',
+        })
     return fig
 
 app.run_server(debug=False)
