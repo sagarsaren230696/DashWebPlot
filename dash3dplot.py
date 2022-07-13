@@ -58,6 +58,18 @@ def update_bar_chart_2(selected_cycle,projection_dir):
         'plot_bgcolor': 'rgba(0, 0, 0, 0)',
         # 'paper_bgcolor': 'rgba(0, 0, 0, 0)',
         })
+    fig.update_xaxes(ticks="inside", tickwidth=4, tickcolor='black', ticklen=10)
+    fig.update_yaxes(ticks="inside", tickwidth=4, tickcolor='black', ticklen=10)
+
+    fig.update_xaxes(minor_ticks="inside",minor=dict(ticklen=6, tickcolor="black"))
+    fig.update_yaxes(minor_ticks="inside",minor=dict(ticklen=6, tickcolor="black"))
+    
+    fig.update_xaxes(showline=True, linewidth=2, linecolor='black', mirror="all")
+    fig.update_yaxes(showline=True, linewidth=2, linecolor='black', mirror="all")
+
+    fig.update_xaxes(range=[0,26])
+    fig.update_yaxes(range=[0,26])
+
     return fig
 
 app.run_server(debug=False)
